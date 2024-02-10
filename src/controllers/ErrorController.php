@@ -6,7 +6,8 @@ use \core\Controller;
 class ErrorController extends Controller {
 
     public function index() {
-        $this->render('404');
+        echo "Deu erro";
+        //$this->render('404');
     }
 
 }

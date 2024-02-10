@@ -91,7 +91,7 @@
                                     </td>
 
                                     <td>
-                                        <a href="excluir.php?id=<?= $vendedor['id']; ?>">Excluir</a>
+                                        <a href="<?=$base;?>/deletar-funcionario/<?=$vendedor['id'];?>">Excluir</a>
                                     </td>
                                 </tr>
 
