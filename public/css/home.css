@@ -45,6 +45,15 @@
     font-size: 30px;
     font-weight: bold;
 }
+.texto-secundario {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 50px 0 0 0;
+}
+.texto-secundario p {
+    font-size: 20px;
+}
 .form-select {
     width: 200px;
 }
@@ -53,6 +62,12 @@
     margin: 50px 0 0 0;
 }
 .col-3 input {
+    width: 100%;
+    border-radius: 10px;
+    padding: 5px;
+    border: 1px solid black;
+}
+.col-3 select {
     width: 100%;
     border-radius: 10px;
     padding: 5px;

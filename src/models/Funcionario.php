@@ -35,6 +35,20 @@ class Funcionario {
 
     }
 
+    public function findById($id) {
+
+        $sql = $this->pdo->prepare("SELECT * FROM funcionario_teste LEFT JOIN vendas_teste_php ON vendas_teste_php.idVendedor = funcionario_teste.id WHERE funcionario_teste.id = :id");
+        $sql->bindValue(':id', $id);
+        $sql->execute();
+    
+        // Verifica se há resultados
+        $result = $sql->fetchAll();
+    
+        // Retorna os resultados se existirem, caso contrário, retorna null
+        return $result ? $result : null;
+
+    }
+
     public function findByEmail($email) {
 
         $sql = $this->pdo->prepare("SELECT * FROM funcionario_teste WHERE email = :email");

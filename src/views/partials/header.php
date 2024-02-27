@@ -5,7 +5,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../public/css/home.css">
+    <link rel="stylesheet" href="<?=$base;?>/css/home.css">
     <title>PHP Form</title>
 
     <!-- Bootstrap -->
@@ -42,7 +42,7 @@
                 </li>
 
                 <li>
-                    <a href="<?=$base;?>/add-vendas.php">ADD Vendas</a>
+                    <a href="<?=$base;?>/add-vendas">ADD Vendas</a>
                 </li>
 
                 <!-- <li>

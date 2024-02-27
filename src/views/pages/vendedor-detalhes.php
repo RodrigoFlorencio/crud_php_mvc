@@ -16,42 +16,42 @@
 
     </div>
 
-    <form method="POST" action="editar_action.php">
+    <input type="hidden" name="id" value="<?= $vendedores[0]['id']; ?>">
 
-        <input type="hidden" name="id" value="<?= $vendedores[0]['id']; ?>">
+    <!-- Campos para as informações do vendedor -->
+    <div class="row formulario">
 
-        <!-- Campos para as informações do vendedor -->
-        <div class="row formulario">
+        <div class="col-3">
+            <label>Nome:</label>
+            <input type="text" name="nome" value="<?= $vendedores[0]['nome']; ?>" readonly>
+        </div>
 
-            <div class="col-3">
-                <label>Nome:</label>
-                <input type="text" name="nome" value="<?= $vendedores[0]['nome']; ?>" readonly>
-            </div>
+        <div class="col-3">
+            <label>Cidade:</label>
+            <input type="text" name="cidade" value="<?= $vendedores[0]['cidade']; ?>" readonly>
+        </div>
 
-            <div class="col-3">
-                <label>Cidade:</label>
-                <input type="text" name="cidade" value="<?= $vendedores[0]['cidade']; ?>" readonly>
-            </div>
+        <div class="col-3">
+            <label>Telefone:</label>
+            <input type="text" name="telefone" value="<?= $vendedores[0]['telefone']; ?>" readonly>
+        </div>
 
-            <div class="col-3">
-                <label>Telefone:</label>
-                <input type="text" name="telefone" value="<?= $vendedores[0]['telefone']; ?>" readonly>
+    </div>
+
+    <!-- Lista de vendas do vendedor -->
+    <div class="row">
+
+        <div class="col-12">
+
+            <div class="texto-principal">
+                <p>
+                    Vendas do Vendedor
+                </p>
             </div>
 
         </div>
 
-        <!-- Lista de vendas do vendedor -->
-        <div class="row">
-
-            <div class="col-12">
-
-                <div class="texto-principal">
-                    <p>
-                        Vendas do Vendedor
-                    </p>
-                </div>
-
-            </div>
+        <?php if (!empty($vendedores) && $vendedores[0]['produto'] !== null) : ?>
 
             <div class="col-12">
 
@@ -71,24 +71,18 @@
 
             </div>
 
-        </div>
+        <?php endif; ?>
 
-        <!-- <div class="row">
+        <?php if (!empty($vendedores) && $vendedores[0]['produto'] === null) : ?>
 
-                <div class="col-3">
+            <div class="texto-secundario">
+                <p>
+                    Vendedor sem vendas
+                </p>
+            </div>
 
-                    <div class="btn-enviar">
+        <?php endif; ?>
 
-                        <button type="submit" class="btn btn-primary">
-                            Editar
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div> -->
-
-    </form>
+    </div>
 
 </div>

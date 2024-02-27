@@ -81,19 +81,62 @@ class HomeController extends Controller {
 
     }
 
-    public function vendedorDetalhes($idVendedor) {
+    public function addVendas() {
 
-        /* $vendedores = Funcionario_teste::select()
-                    ->join('vendas_teste_php', 'vendas_teste_php.idVendedor', '=', 'funcionario_teste.id', 'inner')
-                    ->where('funcionario_teste.id', '=', $idVendedor)
-                    ->execute();
+        // Instancie a classe FuncionarioModel para acessar os métodos dela
+        $funcionarioModel = new Funcionario();
+
+        // Chame o método da model para obter os vendedores
+        $vendedores = $funcionarioModel->findAll();
+        
+        $this->render('add-vendas', [
+            'vendedores' => $vendedores
+        ]);
+
+    }
+
+    public function fotos() {
+
+        $this->render('fotos');
+        
+    }
+    
+    public function foto($idFuncionario) {
+
+        //echo "Vendedor ID: ".$idFuncionario['id'];
+
+        //$this->render('vendedor-detalhes');
+
+        // Instancie a classe FuncionarioModel para acessar os métodos dela
+        $funcionarioModel = new Funcionario();
+
+        // Chame o método da model para obter os vendedores
+        $vendedores = $funcionarioModel->findById($idFuncionario['id']);
+
+        var_dump($vendedores);
 
         $this->render('vendedor-detalhes', [
             'vendedores' => $vendedores
-        ]); */
+        ]);
+
+    }
+
+    public function vendedorDetalhes($idFuncionario) {
+
+        // Instancie a classe FuncionarioModel para acessar os métodos dela
+        $funcionarioModel = new Funcionario();
+
+        // Chame o método da model para obter os vendedores
+        $vendedores = $funcionarioModel->findById($idFuncionario['id']);
+
+        $this->render('vendedor-detalhes', [
+            'vendedores' => $vendedores
+        ]);
     }
 
     public function deletarFuncionario($id) {
+
+        echo "Veio para delete id: $id";
 
         // Instancie a classe FuncionarioModel para acessar os métodos dela
         $funcionarioModel = new Funcionario();
@@ -101,6 +144,7 @@ class HomeController extends Controller {
         // Tenta deletar o funcionário
         if ($this->$funcionarioModel->delete($id)) {
             echo "Funcionário deletado com sucesso!";
+            $this->redirect('/');
             // Faça redirecionamento ou outras ações após deletar
         } else {
             echo "Erro ao deletar funcionário.";
