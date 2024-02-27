@@ -18,7 +18,7 @@
 
     </div>
 
-    <form method="POST" action="<?= $base; ?>/add-vendedor">
+    <form method="POST" action="<?= $base; ?>/add-vendas">
 
         <div class="row formulario">
 
@@ -43,7 +43,7 @@
 
             <div class="col-3">
 
-                <input type="text" name="quantidade" placeholder="Quantidade">
+                <input type="text" name="qtd" placeholder="Quantidade">
 
             </div>
 

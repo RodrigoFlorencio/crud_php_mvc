@@ -82,6 +82,25 @@ class Funcionario {
 
     }
 
+    public function addVendas($dados) {
+        
+        $sql = $this->pdo->prepare("INSERT INTO vendas_teste_php (idVendedor, produto, qtd, valor) VALUES (:idVendedor, :produto, :qtd, :valor)");
+
+        $sql->bindValue(':idVendedor', $dados['idVendedor']);
+        $sql->bindValue(':produto', $dados['produto']);
+        $sql->bindValue(':qtd', $dados['qtd']);
+        $sql->bindValue(':valor', $dados['valor']);
+
+        try {
+            $sql->execute();
+            return true; // Sucesso ao adicionar
+        } catch (\PDOException $e) {
+            // Trate os erros de inserção, se necessário
+            return false; // Falha ao adicionar
+        }
+
+    }
+
     public function delete($id) {
 
         $sql = $this->pdo->prepare("DELETE FROM funcionario_teste WHERE id = :id");

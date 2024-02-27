@@ -95,6 +95,41 @@ class HomeController extends Controller {
 
     }
 
+    public function addActionVendas() {
+        
+        $idVendedor = filter_input(INPUT_POST, 'idVendedor', FILTER_SANITIZE_SPECIAL_CHARS);
+        $produto = filter_input(INPUT_POST, 'produto', FILTER_SANITIZE_SPECIAL_CHARS);
+        $qtd = filter_input(INPUT_POST, 'qtd', FILTER_SANITIZE_SPECIAL_CHARS);
+        $valor = filter_input(INPUT_POST, 'valor');
+
+        // Instancie a classe FuncionarioModel para acessar os métodos dela
+        $funcionarioModel = new Funcionario();
+
+        // Instancie a classe FuncionarioModel para acessar os métodos dela
+        $funcionarioModel = new Funcionario();
+
+        // O e-mail não existe, podemos adicionar o funcionário
+        $dadosVendas = [
+            'idVendedor' => $idVendedor,
+            'produto' => $produto,
+            'qtd' => $qtd,
+            'valor' => $valor
+        ];
+
+        // Tente adicionar o funcionário
+        if ($funcionarioModel->addVendas($dadosVendas)) {
+        
+            $this->redirect('/');
+
+        } else {
+
+            echo "Erro ao adicionar funcionário.";
+            //$this->redirect('/add-vendedor');
+
+        }
+
+    }
+
     public function fotos() {
 
         $this->render('fotos');
