@@ -8,6 +8,9 @@ $router->get('/', 'HomeController@index');
 $router->get('/add-vendedor', 'HomeController@adicionar');
 $router->post('/add-vendedor', 'HomeController@addAction');
 
+$router->get('/editar-vendedor/{id}', 'HomeController@editarVendedor');
+$router->post('/editar-vendedor', 'HomeController@editarActionVendedor');
+
 $router->get('/vendedor-detalhes/{id}', 'HomeController@vendedorDetalhes');
 
 $router->get('/add-vendas', 'HomeController@addVendas');

@@ -30,17 +30,6 @@
 
         <div class="row">
 
-            <!-- <div class="filtros">
-
-                <select class="form-select">
-                    <option selected>Filtrar por Cidade:</option>
-                    <option value="1">Guarulhos</option>
-                    <option value="2">São Paulo</option>
-                    <option value="3">Suzano</option>
-                </select>
-
-            </div> -->
-
             <div class="formulario">
 
                 <div class="table-responsive">
@@ -87,11 +76,15 @@
                                     </td>
 
                                     <td>
-                                        <a href="editar.php?id=<?= $vendedor['id']; ?>">Editar</a>
+                                        <a href="<?=$base;?>/editar-vendedor/<?=$vendedor['id'];?>">
+                                            Editar
+                                        </a>
                                     </td>
 
                                     <td>
-                                        <a href="<?=$base;?>/deletar-funcionario/<?=$vendedor['id'];?>">Excluir</a>
+                                        <a href="<?=$base;?>/deletar-funcionario/<?=$vendedor['id'];?>">
+                                            Excluir
+                                        </a>
                                     </td>
                                 </tr>
 

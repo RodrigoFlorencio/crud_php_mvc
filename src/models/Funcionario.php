@@ -35,6 +35,20 @@ class Funcionario {
 
     }
 
+    public function findByIdNOInner($id) {
+
+        $sql = $this->pdo->prepare("SELECT * FROM funcionario_teste WHERE funcionario_teste.id = :id");
+        $sql->bindValue(':id', $id);
+        $sql->execute();
+    
+        // Verifica se há resultados
+        $result = $sql->fetchAll(PDO::FETCH_ASSOC);
+    
+        // Retorna os resultados se existirem, caso contrário, retorna null
+        return $result ? $result : null;
+
+    }
+
     public function findById($id) {
 
         $sql = $this->pdo->prepare("SELECT * FROM funcionario_teste LEFT JOIN vendas_teste_php ON vendas_teste_php.idVendedor = funcionario_teste.id WHERE funcionario_teste.id = :id");
@@ -77,6 +91,26 @@ class Funcionario {
             return true; // Sucesso ao adicionar
         } catch (\PDOException $e) {
             // Trate os erros de inserção, se necessário
+            return false; // Falha ao adicionar
+        }
+
+    }
+
+    public function editVendedor($dados) {
+        
+        $sql = $this->pdo->prepare("UPDATE funcionario_teste SET nome = :nome, cidade = :cidade, email = :email, telefone = :telefone WHERE id = :id");
+
+        $sql->bindValue(':nome', $dados['nome']);
+        $sql->bindValue(':cidade', $dados['cidade']);
+        $sql->bindValue(':email', $dados['email']);
+        $sql->bindValue(':telefone', $dados['telefone']);
+        $sql->bindValue(':id', $dados['id']);
+
+        try {
+            $sql->execute();
+            return true; // Sucesso ao adicionar
+        } catch (\PDOException $e) {
+            print_r($e);
             return false; // Falha ao adicionar
         }
 

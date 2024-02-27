@@ -143,6 +143,60 @@ class HomeController extends Controller {
         ]);
     }
 
+    public function editarVendedor($idFuncionario) {
+
+        // Instancie a classe FuncionarioModel para acessar os métodos dela
+        $funcionarioModel = new Funcionario();
+
+        // Chame o método da model para obter os vendedores
+        $vendedores = $funcionarioModel->findByIdNOInner($idFuncionario['id']);
+        
+        $this->render('editar-vendedor', [
+            'vendedores' => $vendedores
+        ]);
+    }
+
+    public function EditarActionVendedor() {
+
+        $id = filter_input(INPUT_POST, 'id');
+        $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_SPECIAL_CHARS);
+        $cidade = filter_input(INPUT_POST, 'cidade', FILTER_SANITIZE_SPECIAL_CHARS);
+        $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+        $telefone = filter_input(INPUT_POST, 'telefone');
+        
+        // Instancie a classe FuncionarioModel para acessar os métodos dela
+        $funcionarioModel = new Funcionario();
+
+        if($nome && $cidade && $email && $telefone) {
+
+            // Instancie a classe FuncionarioModel para acessar os métodos dela
+            $funcionarioModel = new Funcionario();
+
+            // O e-mail não existe, podemos adicionar o funcionário
+            $dadosFuncionario = [
+                'id' => $id,
+                'nome' => $nome,
+                'cidade' => $cidade,
+                'email' => $email,
+                'telefone' => $telefone
+            ];
+
+            // Tente adicionar o funcionário
+            if ($funcionarioModel->editVendedor($dadosFuncionario)) {
+            
+                $this->redirect('/');
+
+            } else {
+
+                echo "Algo deu errado.";
+                //$this->redirect('/');
+
+            }
+    
+        }
+
+    }
+
     public function deletarFuncionario($id) {
         
         // Instancie a classe FuncionarioModel para acessar os métodos dela
