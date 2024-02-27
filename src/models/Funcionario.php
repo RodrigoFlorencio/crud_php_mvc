@@ -102,15 +102,14 @@ class Funcionario {
     }
 
     public function delete($id) {
-
+        
         $sql = $this->pdo->prepare("DELETE FROM funcionario_teste WHERE id = :id");
-        $sql->bindValue(':id', $id);
+        $sql->bindValue(':id', $id['id']);
 
         try {
             $sql->execute();
             return true; // Sucesso ao deletar
         } catch (\PDOException $e) {
-            // Trate os erros de deleção, se necessário
             return false; // Falha ao deletar
         }
         

@@ -13,4 +13,4 @@ $router->get('/vendedor-detalhes/{id}', 'HomeController@vendedorDetalhes');
 $router->get('/add-vendas', 'HomeController@addVendas');
 $router->post('/add-vendas', 'HomeController@addActionVendas');
 
-$router->get('/deletar-funcionario/{idFuncionario}', 'HomeController@deletarFuncionario');
+$router->get('/deletar-funcionario/{id}', 'HomeController@deletarFuncionario');
